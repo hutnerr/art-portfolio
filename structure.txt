@@ -1,0 +1,11 @@
+In the /art directory, things in folders are part of collections. 
+They will be placed together when the collections page is built.
+
+Anything not in a folder does not have a collection and will only show on the "all" page
+
+Things in the art/homepage folder are the key pieces of art that will be shown on the homepage
+These should be the pieces of art you are most proud of as they will be seen by anyone
+who visits the site. These WILL NEED TO BE DUPLICATES of the thing elsewhere for simplicty.
+
+The things in templates/ are txt representations of the HTML that will be loaded by the
+python build script and filled in with the things in the folders.
