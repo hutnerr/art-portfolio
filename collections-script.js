@@ -1,11 +1,14 @@
-// Carousel functionality
-class Carousel {
+// Collection Carousel functionality
+class CollectionCarousel {
     constructor(carouselId) {
         this.carousel = document.getElementById(carouselId);
+        if (!this.carousel) return;
+        
         this.track = this.carousel.querySelector('.carousel-track');
-        this.cards = this.track.querySelectorAll('.card');
-        this.prevBtn = document.querySelector(`[data-carousel="${carouselId.replace('-carousel', '')}"].prev`);
-        this.nextBtn = document.querySelector(`[data-carousel="${carouselId.replace('-carousel', '')}"].next`);
+        this.cards = this.track.querySelectorAll('.collection-card');
+        const collectionName = carouselId.replace('carousel-', '');
+        this.prevBtn = document.querySelector(`[data-carousel="${collectionName}"].prev`);
+        this.nextBtn = document.querySelector(`[data-carousel="${collectionName}"].next`);
         
         this.currentIndex = 0;
         this.cardWidth = 0;
@@ -17,7 +20,6 @@ class Carousel {
     
     getVisibleCards() {
         const containerWidth = this.carousel.offsetWidth;
-        // Calculate based on card width + gap
         const cardWithGap = this.cards[0].offsetWidth + this.gap;
         return Math.floor(containerWidth / cardWithGap);
     }
@@ -82,33 +84,39 @@ class Carousel {
     }
 }
 
-// Lightbox functionality (only for gallery carousel)
+// Collection-scoped lightbox functionality
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const lightboxClose = document.getElementById('lightbox-close');
 const lightboxPrev = document.getElementById('lightbox-prev');
 const lightboxNext = document.getElementById('lightbox-next');
 
+let currentCollectionImages = [];
 let currentImageIndex = 0;
-let galleryImages = [];
 
-function initLightbox() {
-    // Only gather images from the gallery carousel
-    const galleryCarousel = document.getElementById('gallery-carousel');
-    if (!galleryCarousel) return;
+function initCollectionLightboxes() {
+    // For each collection section
+    const collectionSections = document.querySelectorAll('.collection-section');
     
-    const galleryCardImages = galleryCarousel.querySelectorAll('.card-image img');
-    galleryImages = Array.from(galleryCardImages).map(img => img.src);
-    
-    // Add click listeners only to gallery cards
-    galleryCardImages.forEach((img, index) => {
-        img.closest('.card').addEventListener('click', () => openLightbox(index));
+    collectionSections.forEach(section => {
+        const cards = section.querySelectorAll('.collection-card');
+        const collectionImages = Array.from(cards).map(card => 
+            card.querySelector('img').src
+        );
+        
+        // Add click listeners to each card in this collection
+        cards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                openCollectionLightbox(collectionImages, index);
+            });
+        });
     });
 }
 
-function openLightbox(index) {
+function openCollectionLightbox(images, index) {
+    currentCollectionImages = images;
     currentImageIndex = index;
-    lightboxImg.src = galleryImages[currentImageIndex];
+    lightboxImg.src = currentCollectionImages[currentImageIndex];
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
@@ -119,13 +127,13 @@ function closeLightbox() {
 }
 
 function showPrevImage() {
-    currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
-    lightboxImg.src = galleryImages[currentImageIndex];
+    currentImageIndex = (currentImageIndex - 1 + currentCollectionImages.length) % currentCollectionImages.length;
+    lightboxImg.src = currentCollectionImages[currentImageIndex];
 }
 
 function showNextImage() {
-    currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-    lightboxImg.src = galleryImages[currentImageIndex];
+    currentImageIndex = (currentImageIndex + 1) % currentCollectionImages.length;
+    lightboxImg.src = currentCollectionImages[currentImageIndex];
 }
 
 // Event listeners for lightbox
@@ -151,20 +159,12 @@ document.addEventListener('keydown', (e) => {
 
 // Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all carousels
-    const carousels = [
-        'gallery-carousel',
-        'collections-carousel',
-        'assets-carousel',
-        'games-carousel'
-    ];
-    
-    carousels.forEach(id => {
-        if (document.getElementById(id)) {
-            new Carousel(id);
-        }
+    // Find all collection carousels and initialize them
+    const collectionCarousels = document.querySelectorAll('.collection-carousel');
+    collectionCarousels.forEach(carousel => {
+        new CollectionCarousel(carousel.id);
     });
     
-    // Initialize lightbox
-    initLightbox();
+    // Initialize lightboxes
+    initCollectionLightboxes();
 });

@@ -17,12 +17,12 @@
             </div>
 
             <nav class="main-nav">
-                <a href="#" class="active">Home</a>
-                <a href="#">Gallery</a>
-                <a href="#">Collections</a>
-                <a href="#">Asset Packs</a>
-                <a href="#">Games</a>
-                <a href="#">Contact</a>
+                <a href="/index.html" class="active">Home</a>
+                <a href="/pages/gallery.html">Gallery</a>
+                <a href="/pages/collections.html">Collections</a>
+                <!-- <a href="#">Asset Packs</a> -->
+                <a href="/pages/games.html">Games</a>
+                <a href="/pages/contact.html">Contact</a>
             </nav>
 
         </div>
@@ -31,36 +31,154 @@
     <div class="about-section">
         <h2>PLACEHOLDER</h2>
         <p>
-            I'm an aspiring pixel artist looking to make good art for fun games. 
+            I'm an aspiring pixel artist looking to make good art for fun games.
             If my work interests you, feel free to reach out to me <a href="pages/contact.html">here</a>.
         </p>
-        <p>
-            To see the art I've worked on, check out my <a href="pages/gallery.html">gallery</a> or my <a href="pages/collections.html">collections</a>.
-        </p>
-        <p>
-            To see the games I've worked on, check out my <a href="pages/games.html">games</a> page.
-            Similarly, to see the asset packs I've made on, check out my <a href="pages/asset-packs.html">asset packs</a> page.
-        </p>
-
     </div>
 
-    <div class="gallery" id="gallery">
-        <div class="gallery-item">
-            <img src="art/bison_skull_mask_marked.webp">
+    <!-- Gallery Carousel -->
+    <section class="carousel-section">
+        <div class="section-header">
+            <h2>Gallery</h2>
+            <a href="pages/gallery.html" class="view-all">View All →</a>
         </div>
-        <div class="gallery-item">
-            <img src="art/mobster.webp">
+        <div class="carousel-container">
+            <button class="carousel-btn prev" data-carousel="gallery">‹</button>
+            <div class="carousel" id="gallery-carousel">
+                <div class="carousel-track">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="art/bison_skull_mask_marked.webp" alt="Bison Skull Mask">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="art/mobster.webp" alt="Mobster">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="art/skullkap/skullkap_big.webp" alt="Skullkap">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="art/skullkap/stern_raider_sheet.gif" alt="Stern Raider">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="art/Untitled_11-2a85.webp" alt="Untitled">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next" data-carousel="gallery">›</button>
         </div>
-        <div class="gallery-item">
-            <img src="art/skullkap/skullkap_big.webp">
+    </section>
+
+    <!-- Collections Carousel -->
+    <section class="carousel-section">
+        <div class="section-header">
+            <h2>Collections</h2>
+            <a href="pages/collections.html" class="view-all">View All →</a>
         </div>
-        <div class="gallery-item">
-            <img src="art/skullkap/stern_raider_sheet.gif">
+        <div class="carousel-container">
+            <button class="carousel-btn prev" data-carousel="collections">‹</button>
+            <div class="carousel" id="collections-carousel">
+                <div class="carousel-track">
+                    <div class="card with-info">
+                        <div class="card-image">
+                            <img src="art/skullkap/skullkap_big.webp" alt="Skullkap Collection">
+                        </div>
+                        <div class="card-info">
+                            <h3>Skullkap Series</h3>
+                            <p class="card-description">A collection of character designs featuring skull-themed
+                                warriors and raiders.</p>
+                        </div>
+                    </div>
+                    <div class="card with-info">
+                        <div class="card-image">
+                            <img src="art/mobster.webp" alt="Character Collection">
+                        </div>
+                        <div class="card-info">
+                            <h3>Character Studies</h3>
+                            <p class="card-description">Exploring different character archetypes and styles.</p>
+                        </div>
+                    </div>
+                    <div class="card with-info">
+                        <div class="card-image">
+                            <img src="https://img.itch.zone/aW1nLzI0NzcwNzM5LnBuZw==/original/MKwieg.png" alt="Massaquerade Character Collection">
+                        </div>
+                        <div class="card-info">
+                            <h3>Massaquerade</h3>
+                            <p class="card-description">Game art for the <a href="pages/games.html#massaquerade">Massaquerade</a> project.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next" data-carousel="collections">›</button>
         </div>
-        <div class="gallery-item">
-            <img src="art/Untitled_11-2a85.webp">
+    </section>
+
+    <!-- Asset Packs Carousel -->
+    <!-- <section class="carousel-section">
+        <div class="section-header">
+            <h2>Asset Packs</h2>
+            <a href="pages/asset-packs.html" class="view-all">View All →</a>
         </div>
-    </div>
+        <div class="carousel-container">
+            <button class="carousel-btn prev" data-carousel="assets">‹</button>
+            <div class="carousel" id="assets-carousel">
+                <div class="carousel-track">
+                    <div class="card with-info">
+                        <div class="card-image">
+                            <img src="art/bison_skull_mask_marked.webp" alt="Fantasy Asset Pack">
+                        </div>
+                        <div class="card-info">
+                            <h3>Fantasy Characters</h3>
+                            <p class="card-description">Complete character sprite sheets for fantasy RPGs.</p>
+                            <div class="card-links">
+                                <a href="#" class="card-link">Download</a>
+                                <a href="#" class="card-link">Preview</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next" data-carousel="assets">›</button>
+        </div>
+    </section> -->
+
+    <!-- Games Carousel -->
+    <section class="carousel-section">
+        <div class="section-header">
+            <h2>Games</h2>
+            <a href="pages/games.html" class="view-all">View All →</a>
+        </div>
+        <div class="carousel-container">
+            <button class="carousel-btn prev" data-carousel="games">‹</button>
+            <div class="carousel" id="games-carousel">
+                <div class="carousel-track">
+                    <div class="card with-info">
+                        <div class="card-image">
+                            <img src="https://img.itch.zone/aW1nLzI0NzcwNzM5LnBuZw==/original/MKwieg.png"
+                                alt="Game Project">
+                        </div>
+                        <div class="card-info">
+                            <h3>Massaquerade</h3>
+                            <p class="card-description">A retro-style action RPG featuring hand-crafted pixel art.</p>
+                            <div class="card-links">
+                                <a href="#" class="card-link">Play</a>
+                                <a href="#" class="card-link">itch.io</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next" data-carousel="games">›</button>
+        </div>
+    </section>
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">

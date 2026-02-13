@@ -7,9 +7,9 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background-color: #fafafa;
-    background-image: url('bg.svg');
-    background-repeat: repeat;
-    background-size: 56px 98px;
+    /* background-image: url('bg.svg'); */
+    /* background-repeat: repeat; */
+    /* background-size: 56px 98px; */
     line-height: 1.6;
     position: relative;
 }
@@ -98,38 +98,173 @@ body::before {
     width: 100%;
 }
 
-/* GALLERY STUFF */
-.gallery {
+/* CAROUSEL SECTIONS */
+.carousel-section {
     max-width: 1400px;
-    margin: 0 auto;
-    padding: 3rem 2rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2rem;
+    margin: 4rem auto;
+    padding: 0 2rem;
 }
 
-.gallery-item {
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.section-header h2 {
+    font-size: 1.75rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: #222;
+}
+
+.view-all {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+}
+
+.view-all:hover {
+    color: #000;
+}
+
+.carousel-container {
+    position: relative;
+}
+
+.carousel {
+    overflow: hidden;
+    padding: 1rem 0;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e5e5e5;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: #fff;
+    border-color: #333;
+    color: #000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-btn.prev {
+    left: -24px;
+}
+
+.carousel-btn.next {
+    right: -24px;
+}
+
+/* CARD STYLES */
+.card {
+    flex: 0 0 320px;
     background: #fff;
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.gallery-item:hover {
+.card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
-.gallery-item img {
+.card-image {
     width: 100%;
-    height: auto;
-    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    display: block;
+}
+
+.card.with-info {
+    flex: 0 0 360px;
+    cursor: default;
+}
+
+.card.with-info:hover {
+    transform: translateY(-2px);
+}
+
+.card-info {
+    padding: 1.5rem;
+}
+
+.card-info h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #222;
+    margin-bottom: 0.5rem;
+}
+
+.card-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.card-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.card-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.card-link:hover {
+    background: #000;
+    color: #fff;
+    border-color: #000;
 }
 
 /* LIGHTBOX STUFF */
@@ -315,6 +450,591 @@ footer p a:hover {
     color: #000;
 }
 
+/* PAGE HEADER */
+.page-header {
+    max-width: 1400px;
+    margin: 3rem auto 2rem;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    color: #222;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: #666;
+    letter-spacing: 0.3px;
+}
+
+/* GALLERY GRID */
+.gallery-grid {
+    max-width: 1400px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.gallery-grid-item {
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-grid-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.gallery-grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* COLLECTIONS PAGE */
+.collections-container {
+    max-width: 1400px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+}
+
+.collection-section {
+    margin-bottom: 4rem;
+}
+
+.collection-section:last-child {
+    margin-bottom: 0;
+}
+
+.collection-header {
+    margin-bottom: 2rem;
+}
+
+.collection-header h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: #222;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.collection-carousel-container {
+    position: relative;
+}
+
+.collection-carousel {
+    overflow: hidden;
+    padding: 1rem 0;
+}
+
+.collection-card {
+    flex: 0 0 320px;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.collection-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.collection-card .card-image {
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.collection-card .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* CONTACT PAGE */
+.contact-container {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+}
+
+.contact-section {
+    margin-bottom: 4rem;
+}
+
+.contact-section:last-child {
+    margin-bottom: 0;
+}
+
+.contact-section h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: #222;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.contact-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1.5rem;
+    color: #333;
+}
+
+.email-card .contact-link {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #222;
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+    transition: color 0.2s ease;
+}
+
+.email-card .contact-link:hover {
+    color: #000;
+}
+
+.contact-desc {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.social-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.social-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.social-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.social-info h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #222;
+    margin-bottom: 0.25rem;
+}
+
+.social-info p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+}
+
+/* GAMES PAGE */
+.games-container {
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+}
+
+/* Featured Game */
+.featured-game {
+    margin-bottom: 5rem;
+}
+
+.featured-game-content {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.featured-game-image {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.featured-game-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.featured-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.featured-game-info {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-game-info h2 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: #222;
+    margin-bottom: 0.5rem;
+}
+
+.game-role {
+    font-size: 0.95rem;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.game-description {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.game-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.tag {
+    background: #f5f5f5;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.game-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.game-btn {
+    padding: 0.875rem 1.75rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.game-btn.primary {
+    background: #000;
+    color: #fff;
+}
+
+.game-btn.primary:hover {
+    background: #222;
+    transform: translateY(-2px);
+}
+
+.game-btn.secondary {
+    background: #f5f5f5;
+    color: #333;
+    border: 1px solid #e5e5e5;
+}
+
+.game-btn.secondary:hover {
+    background: #fff;
+    border-color: #333;
+    transform: translateY(-2px);
+}
+
+/* Games Grid */
+.games-grid-section {
+    margin-bottom: 5rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: #222;
+    margin-bottom: 2.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.game-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.game-card-image {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.game-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.game-card:hover .game-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    text-align: center;
+}
+
+.overlay-btn {
+    background: #fff;
+    color: #000;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.overlay-btn:hover {
+    background: #f5f5f5;
+}
+
+.game-card-content {
+    padding: 1.75rem;
+}
+
+.game-card-content h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #222;
+    margin-bottom: 0.5rem;
+}
+
+.game-card-content .game-role {
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+}
+
+.game-brief {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.game-meta {
+    font-size: 0.85rem;
+    color: #999;
+    margin-bottom: 1rem;
+    letter-spacing: 0.3px;
+}
+
+.meta-item {
+    display: inline;
+}
+
+.game-card-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.text-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: color 0.2s ease;
+}
+
+.text-link:hover {
+    color: #000;
+}
+
+/* Collaboration Section */
+.collaboration-section {
+    margin-bottom: 3rem;
+}
+
+.collaboration-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 3rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.collaboration-content h3 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+.collaboration-content > p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+}
+
+.collaboration-specialties {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.specialty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.specialty-icon {
+    width: 32px;
+    height: 32px;
+    color: #333;
+}
+
+.specialty span {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
+    letter-spacing: 0.3px;
+}
+
+.collaboration-cta {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    padding: 1rem 2.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+}
+
+.collaboration-cta:hover {
+    background: #222;
+    transform: translateY(-2px);
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
     .header-inner {
@@ -339,10 +1059,198 @@ footer p a:hover {
         justify-content: center;
     }
 
-    .gallery {
+    .page-header {
+        margin: 2rem auto 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .page-header p {
+        font-size: 1rem;
+    }
+
+    .gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 1.5rem;
-        padding: 2rem 1rem;
+        padding: 0 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .collections-container {
+        padding: 0 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .collection-section {
+        margin-bottom: 3rem;
+    }
+
+    .collection-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .collection-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .collection-card {
+        flex: 0 0 280px;
+    }
+
+    .contact-container {
+        padding: 0 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .contact-section {
+        margin-bottom: 3rem;
+    }
+
+    .contact-section h2 {
+        font-size: 1.25rem;
+    }
+
+    .contact-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .email-card .contact-link {
+        font-size: 1.1rem;
+    }
+
+    .social-links-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .social-card {
+        padding: 1.5rem;
+    }
+
+    .games-container {
+        padding: 0 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .featured-game {
+        margin-bottom: 3rem;
+    }
+
+    .featured-game-content {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-game-image {
+        aspect-ratio: 16/9;
+    }
+
+    .featured-game-info {
+        padding: 2rem 1.5rem;
+    }
+
+    .featured-game-info h2 {
+        font-size: 1.75rem;
+    }
+
+    .game-description {
+        font-size: 1rem;
+    }
+
+    .game-links {
+        flex-direction: column;
+    }
+
+    .game-btn {
+        text-align: center;
+    }
+
+    .games-grid-section {
+        margin-bottom: 3rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .game-card-content h3 {
+        font-size: 1.25rem;
+    }
+
+    .collaboration-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .collaboration-content h3 {
+        font-size: 1.4rem;
+    }
+
+    .collaboration-content > p {
+        font-size: 1rem;
+    }
+
+    .collaboration-specialties {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .specialty span {
+        font-size: 0.85rem;
+    }
+
+    .carousel-section {
+        margin: 3rem auto;
+        padding: 0 1rem;
+    }
+
+    .section-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+
+    .carousel-btn.prev {
+        left: -12px;
+    }
+
+    .carousel-btn.next {
+        right: -12px;
+    }
+
+    .card {
+        flex: 0 0 280px;
+    }
+
+    .card.with-info {
+        flex: 0 0 300px;
+    }
+
+    .card-info {
+        padding: 1.25rem;
+    }
+
+    .card-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .card-description {
+        font-size: 0.85rem;
     }
 
     footer {
